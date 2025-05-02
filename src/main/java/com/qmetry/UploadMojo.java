@@ -83,6 +83,12 @@ public class UploadMojo extends AbstractMojo {
      */
     @Parameter(property="tsFolderPath",required=false)
     String tsFolderPath;
+    
+    /**
+     *Testcase Folder Path
+     */
+    @Parameter(property="tcFolderPath",required=false)
+    String tcFolderPath;
 
     /**
      *Platform name
@@ -277,6 +283,9 @@ public class UploadMojo extends AbstractMojo {
 	    if (tsFolderPath != null && !tsFolderPath.isEmpty()) {
 		getLog().info("Testsuite Folder Path:" + tsFolderPath);
 	    }
+	    if (tcFolderPath != null && !tcFolderPath.isEmpty()) {
+			getLog().info("Testcase Folder Path:" + tcFolderPath);
+		}
 	    if (platform != null && !platform.isEmpty()) {
 		getLog().info("Platform:" + platform);
 	    }
@@ -316,7 +325,7 @@ public class UploadMojo extends AbstractMojo {
 		    getLog().info("Uploading Test Results..........");
 		}
 
-		String response=Upload.uploadfile(url,apikey,resultFilePath,fileformat,autoHierarchy,testsuite,testsuiteName,tsFolderPath,platform,cycle,projectId,release,build, testsuiteFields, testcaseFields, skipWarning, isMatchingRequired, getLog());
+		String response=Upload.uploadfile(url,apikey,resultFilePath,fileformat,autoHierarchy,testsuite,testsuiteName,tsFolderPath,tcFolderPath,platform,cycle,projectId,release,build, testsuiteFields, testcaseFields, skipWarning, isMatchingRequired, getLog());
 
 		if(response.equals("false")) {
 		    throw new MojoExecutionException("Couldn't upload testcase. Please send these logs to qtmprofessional@qmetrysupport.atlassian.net for more information\n");
@@ -347,7 +356,7 @@ public class UploadMojo extends AbstractMojo {
 			//upload test results
 			getLog().info("Uploading Test Results..........");
 			getLog().info("File:"+file);
-			response = Upload.uploadfile(url,apikey,file,fileformat,autoHierarchy,testsuite,testsuiteName,tsFolderPath,platform,cycle,projectId,release,build, testsuiteFields, testcaseFields, skipWarning, isMatchingRequired, getLog());
+			response = Upload.uploadfile(url,apikey,file,fileformat,autoHierarchy,testsuite,testsuiteName,tsFolderPath,tcFolderPath,platform,cycle,projectId,release,build, testsuiteFields, testcaseFields, skipWarning, isMatchingRequired, getLog());
 			if (response.equals("false")) {
 			    throw new MojoExecutionException("Couldn't upload testcase. Please send these logs to qtmprofessional@qmetrysupport.atlassian.net for more information\n");
 			} else {
@@ -370,7 +379,7 @@ public class UploadMojo extends AbstractMojo {
 		    String zipfilepath=CreateZip.createZip(absolutefilepath,format);
 		    getLog().info("Created Zip File:"+zipfilepath);
 		    getLog().info("Uploading Test Results..........");
-		    String response=Upload.uploadfile(url,apikey,zipfilepath,fileformat,autoHierarchy,testsuite,testsuiteName,tsFolderPath,platform,cycle,projectId,release,build, testsuiteFields, testcaseFields, skipWarning, isMatchingRequired, getLog());
+		    String response=Upload.uploadfile(url,apikey,zipfilepath,fileformat,autoHierarchy,testsuite,testsuiteName,tsFolderPath,tcFolderPath,platform,cycle,projectId,release,build, testsuiteFields, testcaseFields, skipWarning, isMatchingRequired, getLog());
 		    if(response.equals("false")) {
 			throw new MojoExecutionException("Couldn't upload testcase.Please send these logs to qtmprofessional@qmetrysupport.atlassian.net for more information\n");
 		    } else {
@@ -387,7 +396,7 @@ public class UploadMojo extends AbstractMojo {
 
 		    //upload test results
 		    getLog().info("Uploading Test Results..........");
-		    String response=Upload.uploadfile(url,apikey,absolutefilepath,fileformat,autoHierarchy,testsuite,testsuiteName,tsFolderPath,platform,cycle,projectId,release,build, testsuiteFields, testcaseFields, skipWarning, isMatchingRequired, getLog());
+		    String response=Upload.uploadfile(url,apikey,absolutefilepath,fileformat,autoHierarchy,testsuite,testsuiteName,tsFolderPath,tcFolderPath,platform,cycle,projectId,release,build, testsuiteFields, testcaseFields, skipWarning, isMatchingRequired, getLog());
 		    if(response.equals("false")) {
 			throw new MojoExecutionException("Couldn't upload test result.Please send these logs to qtmprofessional@qmetrysupport.atlassian.net for more information\n");
 		    } else {
