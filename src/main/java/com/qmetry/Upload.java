@@ -57,7 +57,7 @@ public class Upload {
 	}
 
 	public static String uploadfile(String url, String automationkey, String filepath, String format, String automationHierarchy,
-									String testsuitekey, String testsuiteName, String tsFolderPath, String platform, String cycle, String project, String release, String build,
+									String testsuitekey, String testsuiteName, String tsFolderPath, String tcFolderPath, String platform, String cycle, String project, String release, String build,
 									String testsuiteFields, String testcaseFields, String skipWarning, String isMatchingRequired, Log log) throws Exception {
 		String res;
 
@@ -83,6 +83,9 @@ public class Upload {
 
 		if (tsFolderPath != null && !tsFolderPath.isEmpty())
 			builder.addTextBody("tsFolderPath", tsFolderPath, ContentType.TEXT_PLAIN);
+		
+		if (tcFolderPath != null && !tcFolderPath.isEmpty())
+			builder.addTextBody("tcFolderPath", tcFolderPath, ContentType.TEXT_PLAIN);
 
 		if (cycle != null && !cycle.isEmpty())
 			builder.addTextBody("cycleID", cycle, ContentType.TEXT_PLAIN);
