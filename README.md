@@ -8,6 +8,9 @@ QMetry Test Management Maven Plugin uploads result file(s) generated in a Maven 
 
 ### Step 1: Prerequisite
 
+Create Project and configure QMetry supported Frameworks (Cucumber, TestNG, PyTest BDD, Robot, QMetry Automation Framework, JUnit, HP UFT) and create Test cases.
+Reference : https://qmetrysupport.atlassian.net/wiki/spaces/QPro/pages/619282477/Test+using+Frameworks
+
 To get qmetry configuration from QMetry Test Management :-
 
 1) Login to QMetry Test Management application.
@@ -78,6 +81,7 @@ Open the pom.xml and add the configurations as described on the Automation API s
 * **testsuite (optional)** - Test suite ID or Entity Key (This will upload results to existing test suite)
 * **testsuiteName (optional)** - Test suite Name (This will create a new test suite with given name)
 * **tsFolderPath (optional)** - Test suite Folder Path (This will upload results to the mentioned Test Suite Folder)
+* **tcFolderPath (optional)** - Test case Folder Path (This will create Test case if not created in the mentioned Test Case Folder)
 * **platform (optional)** - Platform Id or Platform Name
 * **testcaseFields (optional)** - Mention system defined fields and user defined fields for test case as shown in Test Case JSON format above
 * **testsuiteFields (optional)** - Mention system defined fields and user defined fields for test suite as shown in Test Suite JSON format above
